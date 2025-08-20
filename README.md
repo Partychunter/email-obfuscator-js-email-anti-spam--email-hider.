@@ -25,7 +25,7 @@ Version 1: Predefined link text(email-obfuscator-text-link.js)
 
 HTML: Place an <a> element with a unique id, e.g. contactLink, and any text.
 
-  
+ code Html <>  Html
   <html>
     <a id="kontaktLink" href="#">Contact us</a>
 </html>
@@ -43,7 +43,8 @@ Version 2: Displaying email address (email-obfuscator-display-email.js)
 
 JavaScript: Insert this script directly where you want to display or hide your email address.
 
-    
+code Html
+
 <script LANGUAGE="JavaScript">
   var user = "yourname"; 
   var site = "yourdomin"; 
