@@ -1,40 +1,37 @@
 # email-obfuscator-js-email-anti-spam--email-hider.
 Simple JavaScript to hide email addresses from spambots while maintaining full 'mailto:' link functionality.
-Tytuł projektu
 
-Np. # JavaScript Email Obfuscator
-Krótki opis
+Project title
 
-"Proste i lekkie skrypty JavaScript zaprojektowane w celu ukrywania adresów e-mail przed robotami spamującymi, przy jednoczesnym zachowaniu pełnej funkcjonalności linku mailto: dla użytkowników."
-Funkcjonalność
+email-obfuscator-js-email-anti-spam--email-hider.
 
-    Ukrywanie e-maila: Skrypty dynamicznie generują adres e-mail, co utrudnia botom indeksowanie.
+Description
 
-    Pełna funkcjonalność mailto:: Po kliknięciu w link, użytkownik może wysłać wiadomość e-mail.
+"Simple and lightweight JavaScript scripts designed to hide email addresses from spambots while maintaining full mailto: link functionality for users.
 
-    Dwie wersje: Dostępne są dwie wersje skryptu, w zależności od potrzeb: jedna dla ukrytego tekstu linku, druga dla wyświetlania pełnego adresu e-mail.
+Hiding Email: Scripts dynamically generate email addresses, making it difficult for bots to crawl them.
 
-Jak to działa?
+Full mailto: functionality: After clicking the link, the user can send an email.
 
-"Zamiast umieszczać adres e-mail bezpośrednio w kodzie HTML (np. <a href="mailto:user@domain.com">), skrypty dzielą adres na części (np. user i domain) i składają go dopiero po załadowaniu strony przez przeglądarkę. Boty, które parsają statyczny kod HTML, nie są w stanie złożyć pełnego adresu."
-Instalacja i użycie
+Two Versions: Two versions of the script are available, depending on your needs: one for hiding the link text, the other for displaying the full email address.
 
-Wersja 1: Zdefiniowany wcześniej tekst linku (email-obfuscator-text-link.js)
+How does it work?
 
-    HTML: Umieść element <a> z unikalnym id, np. kontaktLink, i dowolnym tekstem.
+"Instead of embedding the email address directly into the HTML code (e.g., <a href="mailto:user@domain.com">), scripts break the address into parts (e.g., user and domain) and reassemble it only after the browser loads the page. Bots that parse static HTML are unable to reassemble the full address."
 
-    JavaScript: Wklej poniższy kod do swojego pliku HTML (przed </body>) lub do oddzielnego pliku .js i załaduj go na stronie.
-    code Html
+Installation and use
 
-    IGNORE_WHEN_COPYING_START
-    IGNORE_WHEN_COPYING_END
+Version 1: Predefined link text(email-obfuscator-text-link.js)
 
-        
-    <a id="kontaktLink" href="#">Skontaktuj się z nami</a>
+HTML: Place an <a> element with a unique id, e.g. contactLink, and any text.
 
+  
+  <html>
+    <a id="kontaktLink" href="#">Contact us</a>
+</html>
     <script LANGUAGE="JavaScript">
-      var user = "twojanazwa"; // Zmień na swoją nazwę użytkownika (przed @)
-      var site = "twojadomena.com"; // Zmień na swoją domenę (po @)
+      var user = "yourname"; 
+      var site = "yourdomin"; 
       var emailLink = "mailto:" + user + "@" + site;
       var kontaktLink = document.getElementById("kontaktLink");
       kontaktLink.href = emailLink;
@@ -42,25 +39,17 @@ Wersja 1: Zdefiniowany wcześniej tekst linku (email-obfuscator-text-link.js)
 
       
 
-    Wskazówka: Zastąp twojanazwa i twojadomena.com swoimi danymi.
+Version 2: Displaying email address (email-obfuscator-display-email.js)
 
-Wersja 2: Wyświetlająca adres e-mail (email-obfuscator-display-email.js)
-
-    JavaScript: Wstaw ten skrypt bezpośrednio w miejscu, gdzie chcesz wyświetlić i ukryć adres e-mail.
-    code Html
-
-IGNORE_WHEN_COPYING_START
-IGNORE_WHEN_COPYING_END
+JavaScript: Insert this script directly where you want to display or hide your email address.
 
     
 <script LANGUAGE="JavaScript">
-  var user = "twojanazwa"; // Zmień na swoją nazwę użytkownika (przed @)
-  var site = "twojadomena.com"; // Zmień na swoją domenę (po @)
+  var user = "yourname"; 
+  var site = "yourdomin"; 
 
   document.write('<a href=\"mailto:' + user + '@' + site + '\">');
   document.write(user + '@' + site + '</a>');
 </script>
 
   
-
-Wskazówka: Zastąp twojanazwa i twojadomena.com swoimi danymi.
