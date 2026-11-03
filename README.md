@@ -1,49 +1,56 @@
-# Email Obfuscator JS - Email Anti-Spam & Email Hider
+# Email Obfuscator JS — Email Anti-Spam & Email Hider
 
-Simple JavaScript to hide email addresses from spambots while maintaining full 'mailto:' link functionality.
+Small, dependency-free JavaScript snippets that hide email addresses from spambots while keeping
+full `mailto:` functionality for real users.
 
-## Project Title
+## How it works
 
-`email-obfuscator-js-email-anti-spam--email-hider`
+Instead of putting the address straight into the HTML (`<a href="mailto:user@domain.com">`), the
+address is assembled by JavaScript after the page loads. Bots that scrape static HTML never see a
+complete address.
 
-## Description
+## Files
 
-Simple and lightweight JavaScript scripts designed to hide email addresses from spambots while maintaining full mailto: link functionality for users.
+- `email-obfuscator-display-email.js` — creates the link and shows the full address as its text.
+- `email-obfuscator-text-link.js` — keeps your own link text, only fills in the `href`.
 
-- **Hiding Email**: Scripts dynamically generate email addresses, making it difficult for bots to crawl them.
-- **Full mailto: functionality**: After clicking the link, the user can send an email.
-- **Two Versions**: Two versions of the script are available, depending on your needs: one for hiding the link text, the other for displaying the full email address.
+## Usage
 
-## How does it work?
+Both files are self-contained: edit the two variables at the top, then include the file where the
+link should appear (just before `</body>`, so the element already exists).
 
-Instead of embedding the email address directly into the HTML code (e.g., `<a href="mailto:user@domain.com">`), scripts break the address into parts (e.g., `user` and `domain`) and reassemble it only after the browser loads the page. Bots that parse static HTML are unable to reassemble the full address.
+```js
+var user = "yourname";
+var site = "yourdomain.com";
+```
 
-## Installation and use
-
-### Version 1: Predefined link text (email-obfuscator-text-link.js)
-
-HTML: Place an `<a>` element with a unique id, e.g. `contactLink`, and any text.
+### 1. Show the full address as link text
 
 ```html
-<html>
-  <a id="kontaktLink" href="#">Contact us</a>
-</html>
-<script LANGUAGE="JavaScript">
-  var user = "yourname"; 
-  var site = "yourdomin"; 
-  var emailLink = "mailto:" + user + "@" + site;
-  var kontaktLink = document.getElementById("kontaktLink");
-  kontaktLink.href = emailLink;
-</script>
+<script src="email-obfuscator-display-email.js"></script>
+```
 
+The link is inserted in place of the script tag, so the include position decides where it lands.
 
-### Version 2: Displaying email address (email-obfuscator-display-email.js)
+### 2. Keep your own link text
 
+```html
+<a id="kontaktLink" href="#">Contact us</a>
+<script src="email-obfuscator-text-link.js"></script>
+```
 
-<script LANGUAGE="JavaScript">
-  var user = "yourname"; 
-  var site = "yourdomin"; 
+The `id` must match the one used in the script (`kontaktLink` by default).
 
-  document.write('<a href=\"mailto:' + user + '@' + site + '\">');
-  document.write(user + '@' + site + '</a>');
-</script>
+## Requirements
+
+No dependencies, no build step, no framework. Any browser with JavaScript enabled. The address
+appears in the page source only in pieces, never as a full `mailto:` string.
+
+## Limitations
+
+This defeats static scrapers and simple crawlers, not headless browsers that execute JavaScript. It
+raises the cost of harvesting an address; it is not bulletproof.
+
+## License
+
+Apache License 2.0 — see [LICENSE](LICENSE).
